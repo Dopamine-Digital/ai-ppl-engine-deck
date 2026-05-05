@@ -27,14 +27,9 @@ Source lives at `Dopamine-Digital/ops-playbook/templates/ppl-engine/growth-plan-
 
 1. Edit the source in `ops-playbook`
 2. Copy to `.src.html` in this repo
-3. Re-run StatiCrypt:
-   ```bash
-   cp .src.html /tmp/to-encrypt.html
-   cd /tmp
-   npx staticrypt to-encrypt.html -p "$PASSWORD" -d enc-out --short --remember 30 \
-     --template-color-primary "#7c3aed" --template-color-secondary "#09090b"
-   mv enc-out/to-encrypt.html ~/Dopamine-Digital/repos/ai-ppl-engine-deck/index.html
-   ```
+3. Run `./build.sh` (encrypts + injects favicon and branded `<title>` into the StatiCrypt gate page)
 4. Commit and push the new encrypted `index.html`
 
-`.src.html` is gitignored — only the encrypted version goes public.
+Password defaults to `dopamine`; override with `DECK_PASSWORD=foo ./build.sh`.
+
+`.src.html` is gitignored — only the encrypted version goes public. Never edit `index.html` by hand; always regenerate via `build.sh`.
